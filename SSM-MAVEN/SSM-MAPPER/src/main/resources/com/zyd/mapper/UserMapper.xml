@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyd.mapper.UserMapper">
+	<insert id="insertUser">
+		insert into `user`(userName,nickName,`password`,createTime)
+		values (#{userName},#{userName},#{password},now())
+	</insert>
+	
+	<update id="updateUserNickName">
+		update `user` set nickName = #{nickName} where userId = #{userId}
+	</update>
+	<update id="updateUserPassword">
+		update `user` set `password` = #{password} where userId = #{userId}
+	</update>
+	
+	<select id="selectUserId" resultType="User">
+		select userId,userName,nickName,`password`,createTime
+		from `user` where userId = #{userId}
+	</select>
+	<select id="selectAllUser" resultType="User">
+		select userId,userName,nickName,`password`,createTime
+		from `user`
+	</select>
+</mapper>
